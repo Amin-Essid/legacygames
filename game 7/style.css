@@ -1,0 +1,30 @@
+.grid {
+    height: 350px;
+    width: 227px;
+    border: 1px solid;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.grid div{
+    height: 50px;
+    width: 75px;
+}
+
+.left-line {
+    border-left: 1px dashed;
+}
+
+.right-line {
+    border-right: 1px dashed;
+}
+
+.car {
+    background-color: red;
+    border-radius: 100px;
+    width: 25px;
+}
+
+.wall {
+    background-color: brown;
+}

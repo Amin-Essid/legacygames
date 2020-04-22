@@ -1,0 +1,40 @@
+.grid {
+    width: 200px;
+    height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgb(238, 238, 135);
+
+}
+
+.previous-grid {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgb(238, 238, 135);
+    margin: 10px;
+}
+
+.previous-grid div {
+    width: 20px;
+    height: 20px;
+}
+
+
+.grid div {
+    width: 20px;
+    height: 20px;
+}
+
+.block {
+    background-color: blue;
+}
+
+.block2 {
+    background-color: purple;
+}
+
+.block3{
+    background-color: rgb(131, 131, 4);
+}
