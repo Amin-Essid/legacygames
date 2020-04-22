@@ -2,10 +2,11 @@ let squares = [];
 let displayResult, score, displayTimeLeft, result, timeLeft;
 const width=3;
 let carIndex = 19;
-let wallInterval;
-let wallsInterval1, wallsInterval2;
-let intervalTime = 1000;
+let wallInterval, secondWallInterval;
+let wallsInterval1, secondWallsInterval;
+let intervalTime = 500;
 let speed = 0.9;
+let wallNumber;
 
 function formatEnvirement(){
     const s = document.createElement("h3");
@@ -75,26 +76,65 @@ function moveWall(wallIndex) {
 }, intervalTime);
 }
 
+function moveSecondWall(wallIndex){
+    squares[wallIndex].classList.add("wall");
+    secondWallInterval = setInterval(() => {
+    squares[wallIndex].classList.remove("wall");
+    wallIndex += width;
+    squares[wallIndex].classList.add("wall");
+    if(wallIndex > squares.length - 4 ) {
+        clearInterval(secondWallInterval);
+        result++;
+        displayResult.textContent = result;
+        timeLeft--;
+        displayTimeLeft.textContent = timeLeft;
+        setTimeout( () => {
+            squares[wallIndex].classList.remove("wall")}, intervalTime);
+    }
+    lose();
+    win();
+}, intervalTime);
+}
+
 function randomWall() {
-    let i = Math.random(), n;
+    let i = Math.random();
     if(i < 0.33) {
-        n = 0;
+        wallNumber = 0;
     }
     else if (i>=0.33 && i<=0.66) {
-        n = 1;
+        wallNumber = 1;
     }
     else if (i>0.66) {
-        n = 2;
+        wallNumber = 2;
     }
-    moveWall(n);
-    // secondWall()
+    moveWall(wallNumber);
     intervalTime = intervalTime * speed;
+}
+
+function randomWall2() {
+    let j = Math.random(), wallNumber2;
+    if (j>0.5){
+        wallNumber2 = wallNumber + 1;
+        if (wallNumber2 === 3) {wallNumber2 = 0;}
+        console.log("after")
+    } else {
+        wallNumber2 = wallNumber - 1;
+        if (wallNumber2 === -1) {wallNumber2 = 2;}
+        console.log("before")
+    }
+    setTimeout(() => {
+        moveSecondWall(wallNumber2);
+    }, intervalTime*2)
+
 }
 
 function lose(){
     for (let i = 17; i<squares.length; i++) {
         if(squares[i].classList.contains("wall") && squares[i].classList.contains("car")) {
             clearInterval(wallsInterval1);
+            clearInterval(wallsInterval2);
+            clearInterval(wallInterval);
+            clearInterval(secondWallInterval);
             document.removeEventListener("keyup", controlCar);
             displayResult.textContent = "you lost"
         }
@@ -104,6 +144,9 @@ function lose(){
 function win(){
     if (timeLeft === 0){
         clearInterval(wallsInterval1);
+        clearInterval(wallsInterval2);
+        clearInterval(wallInterval);
+        clearInterval(secondWallInterval);
         document.removeEventListener("keyup", controlCar);
         displayResult.textContent = "you won";
     }
@@ -112,7 +155,8 @@ function win(){
 function runGame(){
     formatEnvirement();
     document.addEventListener("keyup", controlCar);
-    wallsInterval1 = setInterval(randomWall, (intervalTime*7))
+    wallsInterval1 = setInterval(randomWall, (intervalTime*7));
+    wallsInterval2 = setInterval(randomWall2, (intervalTime*8));
 }
 
 document.addEventListener("DOMContentLoaded", runGame);
