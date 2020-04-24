@@ -1,7 +1,35 @@
-document.addEventListener("DOMContentLoaded", () => {
+function runGame(){
+
+    //create html envirement
+    function formatEnvirement(){
+            let head = document.createElement("h1");
+            head.innerHTML = "the current player is: Player "
+            document.body.appendChild(head);
+            let player = document.createElement("span");
+            player.setAttribute("id", "current-player");
+            player.textContent = "1"
+            head.appendChild(player);
+            let result = document.createElement("h1");
+            result.setAttribute("id", "result");
+            document.body.appendChild(result);
+            let grid = document.createElement("div");
+            grid.setAttribute("class", "grid");
+            document.body.appendChild(grid);
+            for (let i = 0; i<49; i++){
+                let div = document.createElement("div");
+                if (i>=42) {div.setAttribute("class", "taken");}
+                grid.appendChild(div);
+            }
+    }
+
+    formatEnvirement();
+
+
     const ships = document.querySelectorAll(".grid div");
     const result = document.querySelector("#result");
     const currentPlayer = document.querySelector("#current-player");
+
+    
 
     for (let i = 0; i<ships.length; i++){
         ships[i].onclick = () => {
@@ -59,5 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         //add an event listener to each square that will trigger the checkBoard function on click
         ships.forEach(ship => ship.addEventListener('click', checkBoard))
-})
+}
 
+
+document.addEventListener("DOMContentLoaded", runGame);

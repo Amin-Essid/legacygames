@@ -1,5 +1,5 @@
-document.addEventListener("DOMContentLoaded", () => {
 
+   function runMemoryGame(){
     //card options
     const cardArray =[
         {
@@ -52,6 +52,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }];
 
     cardArray.sort(() => 0.5 - Math.random());
+
+    function formatEnvirement(){
+        let head = document.createElement("h1");
+        head.innerHTML = "score :"
+        document.body.appendChild(head);
+        let result = document.createElement("span");
+        result.setAttribute("id", "result");
+        head.appendChild(result);
+        let grid = document.createElement("div");
+        grid.setAttribute("class", "grid");
+        document.body.appendChild(grid);
+    }
+
+    formatEnvirement();
 
     const grid = document.querySelector(".grid");
     let resultDisplay = document.querySelector("#result");
@@ -109,4 +123,6 @@ document.addEventListener("DOMContentLoaded", () => {
     createBoard();
 
     
-})
+}
+
+document.addEventListener("DOMContentLoaded", runMemoryGame)

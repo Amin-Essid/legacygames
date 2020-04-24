@@ -1,4 +1,24 @@
-document.addEventListener("DOMContentLoaded", () => {
+function runGame() {
+
+
+    function formatEnvirement(){
+        let head = document.createElement("h1");
+        head.innerHTML = "score: "
+        document.body.appendChild(head);
+        let result = document.createElement("span");
+        result.setAttribute("class", "result");
+        head.appendChild(result);
+        let grid = document.createElement("div");
+        grid.setAttribute("class", "grid");
+        document.body.appendChild(grid);
+        for (let i = 0; i<225; i++){
+            let div = document.createElement("div");
+            grid.appendChild(div);
+        }
+    }
+
+    formatEnvirement();
+
     const squares = document.querySelectorAll('.grid div');
     const resultDisplay = document.querySelector(".result");
     let width = 15;
@@ -67,12 +87,14 @@ document.addEventListener("DOMContentLoaded", () => {
             resultDisplay.textContent = "game over";
             squares[currentShooterIndex].classList.add("boom");
             clearInterval(invaderId);
+            document.removeEventListener("keyup", moveShooter);
         } 
 
         for (let i = 0; i<alienInvaders.length; i++){
             if (alienInvaders[i] > (squares.length - (width - 1))) {
                 resultDisplay.textContent = "game over";
                 clearInterval(invaderId);
+                document.removeEventListener("keyup", moveShooter);
             }
         }
         if (alienInvaders.length === alienInvadersTakenDown.length){
@@ -119,4 +141,7 @@ function shoot(e) {
 document.addEventListener("keyup", shoot);
 
 
-})
+}
+
+
+document.addEventListener("DOMContentLoaded", runGame)
