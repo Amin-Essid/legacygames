@@ -1,4 +1,27 @@
-document.addEventListener("DOMContentLoaded", () => {
+function runGame() {
+
+    function buildEnvirement(){
+        let button = document.createElement("button");
+        button.innerHTML ="start";
+        button.setAttribute("class", "start");
+        document.body.appendChild(button);
+        let score = document.createElement("h1");
+        score.setAttribute("class", "score");
+        score.innerHTML = "score: ";
+        document.body.appendChild(score);
+        let result = document.createElement("span");
+        score.appendChild(result);
+        let grid = document.createElement("div");
+        grid.setAttribute("class", "grid");
+        document.body.appendChild(grid);
+        for (let i = 0; i<100; i++){
+            let div = document.createElement("div");
+            grid.appendChild(div);
+        }
+    }
+    
+    buildEnvirement();
+
     let squares = document.querySelectorAll('.grid div');
     let scoreDisplay = document.querySelector("span");
     let startBtn = document.querySelector(".start");
@@ -16,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    function runGame() {
+    function startGame() {
         squares.forEach( square => {
             square.classList.remove("snake");
             square.classList.remove("apple");
@@ -40,13 +63,18 @@ document.addEventListener("DOMContentLoaded", () => {
          (currentSnake[0] % width == 0 && direction === -1) ||
          (currentSnake[0] - width < 0 && direction === - width) ||
          squares[currentSnake[0] + direction].classList.contains("snake")) {
+             scoreDisplay.innerHTML = "you lost";
              clearInterval(interval);
          }
 
         //  delete the tail of the snake and move his head
          let tail = currentSnake.pop();
          squares[tail].classList.remove("snake");
-         currentSnake.unshift(currentSnake[0] + direction);
+         let step = currentSnake[0] + direction;
+         if (step < 0 || step >= 100) {
+             step = currentSnake[0]
+         }
+         currentSnake.unshift(step);
 
         //  deals with snake getting apple
          if (squares[currentSnake[0]].classList.contains("apple")) {
@@ -90,7 +118,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     document.addEventListener("keyup", control);
-    startBtn.addEventListener("click", runGame);
+    startBtn.addEventListener("click", startGame);
 
 
-})
+}
+
+document.addEventListener("DOMContentLoaded", runGame);
