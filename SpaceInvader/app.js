@@ -1,7 +1,7 @@
 function runGame() {
 
 
-    function formatEnvirement(){
+    function buildEnvirement(){
         let head = document.createElement("h1");
         head.innerHTML = "score: "
         document.body.appendChild(head);
@@ -17,7 +17,7 @@ function runGame() {
         }
     }
 
-    formatEnvirement();
+    buildEnvirement();
 
     const squares = document.querySelectorAll('.grid div');
     const resultDisplay = document.querySelector(".result");

@@ -1,4 +1,38 @@
-document.addEventListener("DOMContentLoaded", () => {
+function runGame() {
+
+
+
+
+  function buildEnvirement(){
+    let button = document.createElement("button");
+    button.innerHTML ="start/pause";
+    document.body.appendChild(button);
+    let score = document.createElement("h1");
+    score.setAttribute("class", "score-display");
+    score.innerHTML = "0";
+    document.body.appendChild(score);
+    let lines = document.createElement("h1");
+    lines.setAttribute("class", "lines-display");
+    lines.innerHTML = "0";
+    document.body.appendChild(lines);
+    let previousGrid = document.createElement("div");
+    previousGrid.setAttribute("class", "previous-grid");
+    document.body.appendChild(previousGrid);
+    for (let i = 0; i<16; i++){
+        let div = document.createElement("div");
+        previousGrid.appendChild(div);
+    }
+    let grid = document.createElement("div");
+    grid.setAttribute("class", "grid");
+    document.body.appendChild(grid);
+    for (let i = 0; i<200; i++){
+        let div = document.createElement("div");
+        if(i>=190) div.setAttribute("class", "block3");
+        grid.appendChild(div);
+    }
+}
+
+buildEnvirement();
 
     const grid = document.querySelector(".grid");
     let squares = Array.from(grid.querySelectorAll("div"));
@@ -135,7 +169,6 @@ function moveDown(){
       undraw();
       currentRotation--;
       if (currentRotation === -1) {currentRotation = current.length - 1}
-      console.log(currentRotation)
       current = theTetrominoes[random][currentRotation];
       draw();
     }
@@ -219,11 +252,8 @@ function moveDown(){
           squares[index].classList.remove("block2")
           squares[index].classList.remove("block")
         });
-        console.log(squares.length)
         const squaresRemoved = squares.splice(currentIndex, width);
-        console.log(squares.length)
         squares = squaresRemoved.concat(squares);
-        console.log(squares.length)
         squares.forEach(square => grid.appendChild(square))
 
       }
@@ -233,4 +263,6 @@ function moveDown(){
   
 
 
-})
+};
+
+document.addEventListener("DOMContentLoaded", runGame);
