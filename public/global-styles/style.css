@@ -1,0 +1,81 @@
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+button {
+  position: relative;
+  background: orangered;
+  border: none;
+  color: white;
+  padding: 15px 24px;
+  font-size: 1.4rem;
+  -webkit-box-shadow: -6px 6px 0 #992900;
+          box-shadow: -6px 6px 0 #992900;
+  outline: none;
+  cursor: pointer;
+}
+
+button::before {
+  position: absolute;
+  display: block;
+  content: "";
+  height: 0;
+  width: 0;
+  border: solid 6px transparent;
+  border-right: solid 6px #992900;
+  border-left-width: 0;
+  top: 0;
+  left: -6px;
+}
+
+button::after {
+  position: absolute;
+  display: block;
+  content: "";
+  height: 0;
+  width: 0;
+  border: solid 6px transparent;
+  border-top: solid 6px #992900;
+  border-bottom-width: 0;
+  right: 0;
+  bottom: -6px;
+}
+
+button:hover {
+  background: #e63d00;
+}
+
+button:active {
+  background: #cc3600;
+  top: 3px;
+  left: -3px;
+  -webkit-box-shadow: -3px 3px 0 #992900;
+          box-shadow: -3px 3px 0 #992900;
+}
+
+button:active::before {
+  border: solid 3px transparent;
+  border-right: solid 3px #992900;
+  border-left-width: 0;
+  left: -3px;
+}
+
+button:active::after {
+  border: solid 3px transparent;
+  border-top: solid 3px #992900;
+  border-bottom-width: 0;
+  bottom: -3px;
+}
+/*# sourceMappingURL=style.css.map */
