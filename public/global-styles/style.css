@@ -12,6 +12,11 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  font-family: 'Righteous', cursive;
+}
+
+a {
+  text-decoration: none;
 }
 
 button {
@@ -77,6 +82,14 @@ button:active::after {
   border-top: solid 3px #992900;
   border-bottom-width: 0;
   bottom: -3px;
+}
+
+.back-btn {
+  background-color: blue;
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
 }
 
 .home-menu {
