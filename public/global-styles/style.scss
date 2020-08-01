@@ -79,3 +79,20 @@ button {
 .timing {
 
 }
+
+.home-menu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+.home-menu_link {
+    display: inline;
+    text-align: center;
+}
+
+.home-menu_image {
+    width: 200px;
+    height: 200px;
+}

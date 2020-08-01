@@ -5,14 +5,16 @@
 </head>
 <body>
 
-    <% const games = [{title:'SPACE INVADER', lnk:'SpaceInvader'}, {title:'TETRIS', lnk:'Tetris'}, {title:'THE SNAKE', lnk:'TheSnake'}, {title:'MEMORY GAME', lnk:'MemoryGame'}, {title:'DEATH RACE', lnk:'DeathRace'}, {title:'CONNECT FOUR', lnk:'ConnectFour'}, {title:'WACKMOLE', lnk:'WackMole'}, {title:'PUZZLE', lnk:''}] %> 
+    <!-- {title:'CONNECT FOUR', lnk:'ConnectFour'}, -->
+    <!-- {title:'PUZZLE', lnk:''} -->
+    <% const games = [{title:'SPACE INVADER', lnk:'SpaceInvader'}, {title:'TETRIS', lnk:'Tetris'}, {title:'THE SNAKE', lnk:'TheSnake'}, {title:'MEMORY GAME', lnk:'MemoryGame'}, {title:'DEATH RACE', lnk:'DeathRace'},  {title:'WACKMOLE', lnk:'WackMole'}] %> 
 
     <h1>Legacy Games</h1>
     <div class="home-menu">
         <% games.forEach(game => { %> 
         <a href=<%= `/${game.lnk}` %>  class="home-menu_link">
             <div class='home-menu_item'>
-                <img src="" alt="" class="home-menu_image">
+                <img src=<%=`/home-images/${game.lnk}.jpg` %> alt="" class="home-menu_image">
                 <p class="home-menu_title"><%= game.title %> </p>
             </div>
         </a>

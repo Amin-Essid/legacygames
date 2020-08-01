@@ -7,7 +7,8 @@ const app = express();
 app.set('view engine', 'ejs');
 
 // listen to requests
-app.listen(3000);
+const port = process.env.PORT || 3000;
+app.listen(port);
 
 // middleware and static files
 app.use(express.static('public'))
@@ -18,11 +19,11 @@ app.get('/', (req, res) => {
     res.render('./home/index', {title: 'home'});
 });
 
-app.get('/ConnectFour', (req, res) => {
-    // res.send('...');
-    // res.sendFile('./views/ConnectFour/index.html', { root: __dirname});
-    res.render('./ConnectFour/index', {title: 'ConnectFour'});
-});
+// app.get('/ConnectFour', (req, res) => {
+//     // res.send('...');
+//     // res.sendFile('./views/ConnectFour/index.html', { root: __dirname});
+//     res.render('./ConnectFour/index', {title: 'ConnectFour'});
+// });
 
 app.get('/DeathRace', (req, res) => {
     // res.send('...');

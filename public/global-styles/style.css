@@ -78,4 +78,23 @@ button:active::after {
   border-bottom-width: 0;
   bottom: -3px;
 }
+
+.home-menu {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  grid-auto-rows: minmax(100px, auto);
+}
+
+.home-menu_link {
+  display: inline;
+  text-align: center;
+}
+
+.home-menu_image {
+  width: 200px;
+  height: 200px;
+}
 /*# sourceMappingURL=style.css.map */
