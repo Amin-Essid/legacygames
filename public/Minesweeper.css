@@ -10,16 +10,13 @@
     height: 40px;
     width: 40px;
     cursor: pointer;
-}
-
-.bomb {
     background-color: orange;
-}
-
-.valid {
-    background-color: grey;
+    border: 1px solid grey;
+    box-sizing: border-box;
 }
 
 .checked {
-    background-color: red;
+    background-color: olive !important;
+    font-size: 20px;
+    text-align: center;
 }
