@@ -5,13 +5,16 @@ function runGame() {
 
   function buildEnvirement(){
     let button = document.createElement("button");
+    let buttonLnk = document.createElement("a");
+    buttonLnk.setAttribute("href", "#grid")
     button.innerHTML ="start/pause";
-    document.body.appendChild(button);
+    buttonLnk.appendChild(button);
+    document.body.appendChild(buttonLnk);
     let score = document.createElement("h1");
     score.setAttribute("class", "score-display");
     score.innerHTML = "0";
     document.body.appendChild(score);
-    let lines = document.createElement("h1");
+    let lines = document.createElement("h4");
     lines.setAttribute("class", "lines-display");
     lines.innerHTML = "0";
     document.body.appendChild(lines);
@@ -24,6 +27,7 @@ function runGame() {
     }
     let grid = document.createElement("div");
     grid.setAttribute("class", "grid");
+    grid.setAttribute("id", "grid");
     document.body.appendChild(grid);
     for (let i = 0; i<200; i++){
         let div = document.createElement("div");

@@ -25,10 +25,10 @@ app.get('/', (req, res) => {
 //     res.render('./ConnectFour/index', {title: 'ConnectFour'});
 // });
 
-app.get('/DeathRace', (req, res) => {
+app.get('/Minesweeper', (req, res) => {
     // res.send('...');
     // res.sendFile('./views/DeathRace/index.html', { root: __dirname});
-    res.render('./DeathRace/index', {title: 'DeathRace'});
+    res.render('./Minesweeper/index', {title: 'Minesweeper'});
 });
 
 app.get('/MemoryGame', (req, res) => {
